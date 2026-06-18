@@ -39,6 +39,18 @@ chore: document Greptile workflow
 
 Use [docs/checklists/pr-checklist.md](docs/checklists/pr-checklist.md) before opening a PR.
 
+## Agent skills
+
+| Skill | When to use |
+|-------|-------------|
+| `check-pr` | One-shot PR readiness check (CI, Greptile, description) |
+| `greploop` | Loop until Greptile 5/5 confidence with zero comments |
+| `code-simplifier` | Clean up recently modified code before opening PR |
+| `code-structure` | Refactoring shared logic into service layer |
+| `frontend-component-architecture` | Component placement, shadcn usage, feature folders |
+
+Skills live in `.cursor/skills/<name>/SKILL.md`. PR skills require `gh auth login`.
+
 ## Code structure
 
 When refactoring shared logic across flows, follow the **code-structure** skill in `.cursor/skills/code-structure/SKILL.md` (from [michaelshimeles/skills](https://github.com/michaelshimeles/skills)):

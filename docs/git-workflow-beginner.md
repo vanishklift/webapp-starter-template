@@ -93,13 +93,19 @@ npm run test
 npm run dev   # click through your change
 ```
 
-### 2. Open PR on GitHub
+### 2. Clean up your code (optional but recommended)
+
+If you used an AI agent for a large change, run the **code-simplifier** skill in Cursor to tidy up recently modified files without changing behavior.
+
+Local copy: `.cursor/skills/code-simplifier/SKILL.md`
+
+### 3. Open PR on GitHub
 
 - **Base branch:** `staging` (not `main`)
 - **Compare branch:** your `feat/...` branch
 - Fill in the PR template checklist
 
-### 3. Greptile review
+### 4. Greptile review
 
 [Greptile](https://www.greptile.com/docs/introduction) automatically reviews your PR in about 3 minutes.
 
@@ -108,7 +114,24 @@ npm run dev   # click through your change
 - Use 👍/👎 on comments so Greptile learns your team's style.
 - If Greptile suggests a fix, you can use **Fix with your Agent** (Cursor, etc.) when available.
 
-### 4. Human review
+#### Agent skills for Greptile feedback
+
+| Skill | When to use | How |
+|-------|-------------|-----|
+| **check-pr** | First check after opening PR or after pushing fixes | Ask Cursor: "run check-pr" — triages CI, Greptile comments, and description |
+| **greploop** | Greptile still has many comments or confidence below 5/5 | Ask Cursor: "run greploop" — loops fix → push → re-review until clean |
+| **code-simplifier** | Code works but the diff is messy | Ask Cursor: "run code-simplifier" — cleans up without changing behavior |
+
+Skills live in `.cursor/skills/<name>/SKILL.md`. Requires `gh` CLI authenticated (`gh auth login`).
+
+**Typical flow:**
+1. Open PR → wait for Greptile (~3 min)
+2. Run **check-pr** to see what's actionable
+3. Fix issues, push again
+4. If Greptile still has multiple rounds of feedback → run **greploop**
+5. Run **code-simplifier** before final human review if needed
+
+### 5. Human review
 
 Ask your coworker to review. When checks pass and review is approved → **Merge**.
 
@@ -167,22 +190,27 @@ git push
 
 | Resource | Link | When to use |
 |----------|------|-------------|
+| Architecture | [starter-architecture.md](starter-architecture.md) | How the stack fits together |
 | Greptile | [Introduction](https://www.greptile.com/docs/introduction) | Every PR — automatic AI review |
+| check-pr / greploop | `.cursor/skills/` | PR readiness and Greptile fix loops |
+| code-simplifier | `.cursor/skills/code-simplifier/` | Clean up code before review |
 | Convex | [Docs home](https://docs.convex.dev/home) | Backend, schema, queries |
 | TanStack | [tanstack.com](https://tanstack.com/) | Router, Start, Query |
-| opensrc | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc) | Give AI agents npm package source context |
-| code-structure | [michaelshimeles/skills](https://github.com/michaelshimeles/skills) | Refactoring shared logic into services |
+| shadcn/ui | [ui.shadcn.com](https://ui.shadcn.com/) | UI components |
+| opensrc | [opensrc-workflow.md](opensrc-workflow.md) | Fetch npm/repo source for AI agents |
+| code-structure | `.cursor/skills/code-structure/` | Refactoring shared logic into services |
 
 ### opensrc quick start
 
+Fetch upstream source for stack packages (stored locally under `opensrc/repos/github.com/`):
+
 ```bash
-npm install -g opensrc
-cat $(opensrc path convex)/src/react/ConvexProvider.tsx
+npx opensrc fetch get-convex/convex-backend
+npx opensrc fetch TanStack/router
+rg "runQuery" opensrc/repos/github.com/get-convex/convex-helpers/
 ```
 
-### code-structure in this repo
-
-Local copy: `.cursor/skills/code-structure/SKILL.md` — read before extracting shared backend/frontend logic.
+See [opensrc-workflow.md](opensrc-workflow.md) and [stack-source-repos.md](stack-source-repos.md).
 
 ---
 

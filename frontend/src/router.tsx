@@ -5,16 +5,26 @@ import { ConvexQueryClient } from '@convex-dev/react-query'
 import { ConvexProvider } from 'convex/react'
 import { routeTree } from './routeTree.gen'
 
-export function getRouter() {
-  const CONVEX_URL = import.meta.env.VITE_CONVEX_URL
+function getConvexUrl(): string {
+  const convexUrl = import.meta.env.VITE_CONVEX_URL
 
-  if (!CONVEX_URL) {
-    console.warn(
-      'VITE_CONVEX_URL is not set. Run `npm run dev:backend` and copy the URL to frontend/.env.local',
-    )
+  if (!convexUrl) {
+    const message =
+      'VITE_CONVEX_URL is not set. Run `npm run dev:backend`, copy the deployment URL into frontend/.env.local, then restart the frontend dev server.'
+
+    if (import.meta.env.DEV) {
+      throw new Error(message)
+    }
+
+    console.warn(message)
+    return ''
   }
 
-  const convexQueryClient = new ConvexQueryClient(CONVEX_URL ?? '')
+  return convexUrl
+}
+
+export function getRouter() {
+  const convexQueryClient = new ConvexQueryClient(getConvexUrl())
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {

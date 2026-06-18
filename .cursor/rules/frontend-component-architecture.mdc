@@ -1,0 +1,29 @@
+---
+description: Frontend component layering, shadcn usage, and composition rules for React/TSX files
+globs: frontend/src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Frontend Component Architecture
+
+## Layer hierarchy (compose upward, never skip layers)
+
+1. `components/ui/` — shadcn primitives only (`Button`, `Card`, `Input`). Keep generic; avoid business logic.
+2. `components/app/` — app-wide reusable bases (`AppProvider`, `CardBackground`, `PageShell`).
+3. `features/<feature>/components/` — feature UI (`UserCard`, `TaskList`) composed from app + ui layers.
+4. `routes/` — page assembly, data loading, protected/public route decisions.
+5. `backend/convex/src/<feature>/` — business/data logic (queries, mutations, validation).
+
+## Rules
+
+- **Compose, don't duplicate.** Build feature components from app primitives and shadcn ui, not raw markup copies.
+- **No business logic in ui/ or app/.** Data fetching, auth checks, and domain rules belong in routes, hooks, or Convex.
+- **shadcn primitives stay shadcn-shaped.** Add via CLI into `components/ui/`; wrap in `components/app/` for app-specific variants instead of heavily editing generated files.
+- **Protected pages at route/provider boundary.** Use route metadata or `AppProvider` policy — not individual cards or buttons.
+- **Extract bases only when reused.** Create `CardBackground` in `components/app/` when two or more feature components need the same shell.
+- **Use path aliases:** `@/components/ui`, `@/components/app`, `@/features/...`, `@/lib` (see `frontend/components.json`).
+
+## Naming
+
+- shadcn ui files: lowercase (`button.tsx`, `card.tsx`) — match CLI output.
+- App and feature components: PascalCase files and exports (`CardBackground.tsx`, `UserCard.tsx`).

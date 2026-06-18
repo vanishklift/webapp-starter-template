@@ -18,6 +18,7 @@
 ## Greptile / review
 
 - [ ] I read Greptile comments and fixed or replied to each one
+- [ ] I ran `check-pr` (or manually verified CI + Greptile status)
 - [ ] I requested review from a teammate
 
 ## Screenshots (if UI change)

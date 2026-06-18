@@ -35,3 +35,9 @@ npm-debug.log*
 # Test / tooling
 coverage/
 todos.json
+worktrees/
+# opensrc local cache (managed by opensrc CLI)
+opensrc/repos/
+opensrc/packages/
+opensrc/sources.json
+opensrc/sources.json.bak

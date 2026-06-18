@@ -1,0 +1,29 @@
+# Canonical opensrc source manifest for the Workbench starter.
+# One source per line. Blank lines and # comments are ignored.
+#
+# Pinning policy:
+# - Prefer package names when the package exists in package-lock.json (opensrc resolves installed version).
+# - Use owner/repo@tag for stable repo references when a release tag is known.
+# - Use owner/repo#main only for reference material where latest examples are desired.
+
+# npm packages (version resolved from lockfiles)
+convex
+convex-helpers
+hono
+@hono/zod-validator
+@scalar/hono-api-reference
+@tanstack/react-router
+@tanstack/react-query
+@tanstack/react-start
+vite
+tailwindcss
+lucide-react
+vitest
+eslint
+prettier
+
+# Repo-only references / design and skill sources
+shadcn-ui/ui#main
+greptileai/skills#main
+jaycmpb/convex-starter#main
+vercel-labs/opensrc#main

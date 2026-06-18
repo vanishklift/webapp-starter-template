@@ -2,15 +2,22 @@
   "name": "workbench",
   "private": true,
   "description": "Full-stack starter: TanStack Start frontend + Convex backend",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "concurrently -n frontend,backend -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
     "build": "npm --prefix frontend run build",
     "lint": "npm --prefix frontend run lint",
-    "test": "npm --prefix frontend run test",
+    "typecheck": "npm --prefix frontend run typecheck && npm --prefix backend run typecheck",
+    "test": "npm --prefix frontend run test && npm --prefix backend run test",
     "format": "npm --prefix frontend run format",
-    "check": "npm --prefix frontend run check"
+    "check:format": "npm --prefix frontend run check:format",
+    "check": "npm run check:format && npm run lint && npm run typecheck && npm run test",
+    "opensrc:sync": "node scripts/opensrc-sync.mjs",
+    "opensrc:fetch-stack": "npm run opensrc:sync"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

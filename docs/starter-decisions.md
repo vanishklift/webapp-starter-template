@@ -8,7 +8,10 @@ This document records the agreed defaults for the workbench starter repo.
 |------|--------|
 | Frontend | TanStack Start (React, SSR-capable) |
 | Routing | TanStack Router |
+| UI components | shadcn/ui (Radix + Tailwind CSS v4) |
 | Backend | Convex (queries, mutations, schema) |
+| HTTP API | Hono + OpenAPI + Scalar (via convex-helpers) |
+| Error logging | PostHog (optional, background via scheduler) |
 | Language | TypeScript |
 | Styling | Tailwind CSS v4 |
 | Package manager | npm (pnpm optional later) |
@@ -20,7 +23,8 @@ This document records the agreed defaults for the workbench starter repo.
 |------|---------|
 | ESLint | Linting (`@tanstack/eslint-config`) |
 | Prettier | Formatting |
-| Vitest | Unit tests |
+| TypeScript | `tsc --noEmit` in frontend and backend |
+| Vitest | Unit tests (frontend components + backend shared utilities) |
 
 ## Branch workflow
 
@@ -35,7 +39,10 @@ This document records the agreed defaults for the workbench starter repo.
 | Tool | When to use |
 |------|-------------|
 | [Greptile](https://www.greptile.com/docs/introduction) | Automatic PR review on every pull request |
-| [opensrc](https://github.com/vercel-labs/opensrc) | Give coding agents source context for npm packages |
+| `check-pr` skill | One-shot PR readiness check before human review |
+| `greploop` skill | Loop until Greptile 5/5 confidence with zero comments |
+| `code-simplifier` skill | Clean up recently modified code before opening PR |
+| [opensrc](https://github.com/vercel-labs/opensrc) | Fetch npm/repo source for deeper library context |
 | [code-structure skill](https://github.com/michaelshimeles/skills) | Guide service-layer architecture when refactoring |
 
 Greptile runs during PR review (not before opening a PR). Local lint/test runs before pushing.
@@ -51,10 +58,17 @@ Greptile runs during PR review (not before opening a PR). Local lint/test runs b
 
 ```
 workbench/
-├── frontend/          # TanStack Start app
+├── frontend/          # TanStack Start app + shadcn/ui
 ├── backend/
-│   └── convex/        # Convex functions and schema
-├── docs/              # Team guides and checklists
-├── .github/           # PR templates, issue templates, CI
+│   └── convex/        # Convex functions, Hono HTTP API
+├── docs/              # Team guides, architecture, checklists
+├── .cursor/skills/    # Agent skills
+├── opensrc/           # Local source cache (gitignored)
 └── convex.json        # Points Convex CLI to backend/convex
 ```
+
+## Related docs
+
+- [starter-architecture.md](starter-architecture.md) — full architecture explanation
+- [opensrc-workflow.md](opensrc-workflow.md) — fetching dependency source
+- [stack-source-repos.md](stack-source-repos.md) — upstream repo inventory
