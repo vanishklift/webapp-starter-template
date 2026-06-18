@@ -6,16 +6,21 @@
     "node": ">=20"
   },
   "scripts": {
+    "install:all": "npm install && npm --prefix frontend install && npm --prefix backend install",
+    "bootstrap": "npm run install:all && npm run init-project",
     "dev": "concurrently -n frontend,backend -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
     "build": "npm --prefix frontend run build",
     "lint": "npm --prefix frontend run lint",
     "typecheck": "npm --prefix frontend run typecheck && npm --prefix backend run typecheck",
-    "test": "npm --prefix frontend run test && npm --prefix backend run test",
+    "test": "npm run test:scripts && npm --prefix frontend run test && npm --prefix backend run test",
     "format": "npm --prefix frontend run format",
     "check:format": "npm --prefix frontend run check:format",
     "check": "npm run check:format && npm run lint && npm run typecheck && npm run test",
+    "init-project": "node scripts/init-project.mjs",
+    "project:brief": "npm run init-project",
+    "test:scripts": "node --test scripts/project-brief.test.mjs",
     "opensrc:sync": "node scripts/opensrc-sync.mjs",
     "opensrc:fetch-stack": "npm run opensrc:sync"
   },

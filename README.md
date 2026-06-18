@@ -4,17 +4,38 @@ Full-stack starter for team projects: **TanStack Start** frontend + **Convex** b
 
 ## Quick start
 
-### 1. Clone and install
+### 1. Clone
 
 ```bash
 git clone https://github.com/vanishklift/workbench.git
 cd workbench
-npm install
-npm --prefix frontend install
-npm --prefix backend install
 ```
 
-### 2. Start Convex (backend)
+### 2. Install everything (root + frontend + backend)
+
+```bash
+npm run install:all
+```
+
+### 3. Define your project (recommended)
+
+Run the guided intake to create a living project brief for your team and AI agents:
+
+```bash
+npm run init-project
+```
+
+This writes [docs/project-brief.md](docs/project-brief.md) with your app name, target users, core workflows, domain entities, and v1 feature goals. Re-run anytime to append a dated update — the script never overwrites an existing brief unless you explicitly confirm it.
+
+Commit the brief so agents and teammates share the same product direction.
+
+Prefer one command to do both install + intake in sequence:
+
+```bash
+npm run bootstrap
+```
+
+### 4. Start Convex (backend)
 
 ```bash
 npm run dev:backend
@@ -29,7 +50,7 @@ npm run dev:backend
 VITE_CONVEX_URL=https://your-deployment.convex.cloud
 ```
 
-### 3. (Optional) Import sample tasks
+### 5. (Optional) Import sample tasks
 
 In a second terminal:
 
@@ -37,7 +58,7 @@ In a second terminal:
 npm --prefix backend exec convex import --table tasks backend/sampleData.jsonl
 ```
 
-### 4. Start the frontend
+### 6. Start the frontend
 
 ```bash
 npm run dev:frontend
@@ -45,13 +66,13 @@ npm run dev:frontend
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### 5. Run both together
+### 7. Run both together
 
 ```bash
 npm run dev
 ```
 
-### 6. (Optional) View HTTP API docs
+### 8. (Optional) View HTTP API docs
 
 When the backend is running, visit your Convex deployment URL:
 
@@ -84,6 +105,9 @@ workbench/
 | `npm run test` | Vitest (frontend + backend) |
 | `npm run check` | Format, lint, typecheck, and test |
 | `npm run format` | Prettier + ESLint fix |
+| `npm run install:all` | Install root, frontend, and backend dependencies |
+| `npm run bootstrap` | Install everything, then launch project intake |
+| `npm run init-project` | Guided intake — create or update `docs/project-brief.md` |
 | `npm run opensrc:sync` | Fetch stack source refs into local `opensrc/` cache |
 
 ## Git workflow
@@ -136,11 +160,12 @@ See [docs/opensrc-workflow.md](docs/opensrc-workflow.md) and [docs/stack-source-
 
 ## Team onboarding
 
-1. Read [docs/starter-architecture.md](docs/starter-architecture.md) — how everything fits together.
-2. Read [docs/git-workflow-beginner.md](docs/git-workflow-beginner.md) (includes a visual flow diagram).
-3. Follow [docs/checklists/pr-checklist.md](docs/checklists/pr-checklist.md) before every PR.
-4. See [CONTRIBUTING.md](CONTRIBUTING.md) for branch rules and conventions.
-5. Review [docs/starter-decisions.md](docs/starter-decisions.md) for stack choices.
+1. Run `npm run init-project` and commit [docs/project-brief.md](docs/project-brief.md) — what you're building and why.
+2. Read [docs/starter-architecture.md](docs/starter-architecture.md) — how everything fits together.
+3. Read [docs/git-workflow-beginner.md](docs/git-workflow-beginner.md) (includes a visual flow diagram).
+4. Follow [docs/checklists/pr-checklist.md](docs/checklists/pr-checklist.md) before every PR.
+5. See [CONTRIBUTING.md](CONTRIBUTING.md) for branch rules and conventions.
+6. Review [docs/starter-decisions.md](docs/starter-decisions.md) for stack choices.
 
 ## GitHub setup (repo admin)
 
