@@ -1,0 +1,12 @@
+# Example Codex personal config — copy ideas into ~/.codex/config.toml
+# Do NOT commit your actual ~/.codex/config.toml to this repo.
+
+# Increase instruction budget if AGENTS.md + layered docs exceed the default 32 KiB.
+# project_doc_max_bytes = 65536
+
+# Fall back to alternative filenames when AGENTS.md is missing at a level.
+# project_doc_fallback_filenames = ["CONTRIBUTING.md"]
+
+# Disable project doc loading entirely (personal ~/.codex/AGENTS.md still loads).
+# [project_docs]
+# enabled = false

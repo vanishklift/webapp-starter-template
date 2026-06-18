@@ -2,6 +2,16 @@
 
 Instructions for AI coding agents working with this codebase.
 
+## Tool-specific folders
+
+This file and `.cursor/skills/*/SKILL.md` are the canonical source of truth. Tool-specific folders are thin wrappers — reference and link here; do not fork guidance.
+
+| Tool | Folder | Notes |
+|------|--------|-------|
+| Cursor | `.cursor/skills/` | Skills and rules |
+| Claude Code | `.claude/` | `CLAUDE.md`, slash commands |
+| Codex | `.codex/` | Prompt playbooks; Codex also loads this `AGENTS.md` automatically |
+
 ## Branch and PR Workflow
 
 Use `staging` as the integration branch for feature work.

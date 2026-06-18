@@ -67,6 +67,8 @@ workbench/
 │   └── convex/        # Convex schema, queries, mutations, Hono HTTP API
 ├── docs/              # Team guides, architecture, checklists
 ├── .cursor/skills/    # Agent skills (Greptile, code-simplifier, etc.)
+├── .claude/           # Claude Code project config and slash commands
+├── .codex/            # Codex prompt playbooks and onboarding
 ├── .github/           # PR templates, CI, branch setup notes
 └── convex.json        # Convex CLI config (functions → backend/convex)
 ```
@@ -121,6 +123,13 @@ We use **`main`** (production) and **`staging`** (integration). All work happens
 | `frontend-component-architecture` | Component placement, shadcn usage, feature folders |
 
 Skills live in `.cursor/skills/<name>/SKILL.md`.
+
+Tool-specific wrappers (reference the skills above; do not duplicate guidance):
+
+| Tool | Location | Use for |
+|------|----------|---------|
+| Claude Code | `.claude/commands/<name>.md` | Slash commands (`/project:check-pr`, etc.) |
+| Codex | `.codex/prompts/<name>.md` | Copy-paste prompt playbooks |
 
 ### opensrc (optional, for AI coding)
 
