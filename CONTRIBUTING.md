@@ -5,7 +5,7 @@ Thank you for contributing. This is a beginner-friendly guide to how we work.
 ## Before you start
 
 1. Read [docs/git-workflow-beginner.md](docs/git-workflow-beginner.md).
-2. Install dependencies and run the app locally (see [README.md](README.md)).
+2. Install dependencies and run intake with `npm run bootstrap` (see [README.md](README.md)).
 3. Connect Greptile to the repo if you are a reviewer (see [Greptile quickstart](https://www.greptile.com/docs/quickstart)).
 
 ## Branch rules

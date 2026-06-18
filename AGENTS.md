@@ -71,3 +71,17 @@ See [docs/opensrc-workflow.md](docs/opensrc-workflow.md) for the full workflow.
 ## Architecture
 
 See [docs/starter-architecture.md](docs/starter-architecture.md) for monorepo layout, data flow, and feature-folder patterns.
+
+## Project brief
+
+When [docs/project-brief.md](docs/project-brief.md) exists, read it before planning product or feature work. It captures what this repo is becoming: target users, workflows, domain model, roadmap, and open questions.
+
+After cloning the template, humans run `npm run init-project` to create the initial brief. Keep it updated as the product evolves:
+
+- Update **Domain Model** when new entities or relationships emerge.
+- Update **Feature Roadmap** when features are planned, started, or completed.
+- Add rows to **Decisions** for meaningful product or architecture choices.
+- Move resolved items from **Open Questions** into **Decisions**.
+- Use the brief for _what_ and _why_; keep detailed implementation notes in code and architecture docs.
+
+Do not overwrite the brief automatically. Append dated intake updates or edit sections in place with clear, concise changes.
