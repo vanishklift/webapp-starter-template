@@ -1,4 +1,4 @@
-# Workbench
+# Webapp-Starter
 
 Full-stack starter for team projects: **TanStack Start** frontend + **Convex** backend with **Hono HTTP API**, **shadcn/ui**, and agent skills.
 
