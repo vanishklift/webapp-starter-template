@@ -38,7 +38,7 @@ workbench/
 │           ├── internal/        # Background actions (logging)
 │           └── tasks/           # Feature: queries, mutations, http
 ├── docs/                        # Team guides
-├── .cursor/skills/              # Agent skills (Greptile, code-simplifier, etc.)
+├── .cursor/skills/              # Agent skills (Qodo, code-simplifier, etc.)
 ├── opensrc/                     # Local source cache (gitignored)
 └── convex.json                  # Points CLI to backend/convex
 ```
@@ -148,6 +148,19 @@ app.basePath('/api').route('/', myFeatureRouter)
 
 On the frontend, add a route file in `frontend/src/routes/` and place feature UI in `frontend/src/features/<feature>/`. Compose shadcn components from `@/components/ui/` and app shells from `@/components/app/`.
 
+### Route module export contract
+
+TanStack Start automatically code-splits route modules. Extra **runtime** exports from a route file prevent that split and inflate the shared bundle.
+
+**Rules:**
+- Route modules under `frontend/src/routes/` export only `Route` at runtime.
+- Type-only exports (for example `export type RootRouterContext`) are allowed.
+- Keep page/layout implementations **module-private** when they are not shared.
+- Move reusable or independently tested shells/gates to `frontend/src/routes/-components/` (the `-` prefix excludes them from the route tree).
+- Move domain page containers and UI to `frontend/src/features/<feature>/`.
+
+Regression coverage lives in `frontend/src/routes/route-export-contract.test.ts`.
+
 ## Local development lifecycle
 
 ```bash
@@ -178,8 +191,8 @@ See [git-workflow-beginner.md](git-workflow-beginner.md) for the full beginner g
 
 | Skill | When to use |
 |-------|-------------|
-| `check-pr` | One-shot PR readiness check (CI, Greptile comments, description) |
-| `greploop` | Loop until Greptile 5/5 confidence with zero comments |
+| `check-pr` | One-shot PR readiness check (CI, Qodo findings, description) |
+| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | Clean up recently modified code before opening PR |
 | `code-structure` | Refactoring shared logic into service layer |
 | `frontend-component-architecture` | Component placement, shadcn usage, feature folders |

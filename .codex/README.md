@@ -29,7 +29,7 @@ Use the files in `prompts/` as copy-paste starting points. Each references the c
 | Prompt | Skill |
 |--------|-------|
 | `prompts/check-pr.md` | PR readiness check |
-| `prompts/greploop.md` | Greploop until Greptile 5/5 |
+| `prompts/qodo-loop.md` | Qodo-loop until Action required is clear |
 | `prompts/simplify.md` | Code simplifier |
 | `prompts/code-structure.md` | Service-layer refactoring |
 | `prompts/frontend-architecture.md` | Frontend component placement |

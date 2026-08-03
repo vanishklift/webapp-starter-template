@@ -6,7 +6,7 @@ Thank you for contributing. This is a beginner-friendly guide to how we work.
 
 1. Read [docs/git-workflow-beginner.md](docs/git-workflow-beginner.md).
 2. Install dependencies and run intake with `npm run bootstrap` (see [README.md](README.md)).
-3. Connect Greptile to the repo if you are a reviewer (see [Greptile quickstart](https://www.greptile.com/docs/quickstart)).
+3. Connect Qodo to the repo if you are a reviewer (see [Use Qodo in PRs](https://docs.qodo.ai/code-review/use-qodo-in-prs)).
 
 ## Branch rules
 
@@ -32,7 +32,7 @@ Use short, clear messages:
 ```
 feat: add task completion toggle
 fix: handle empty Convex URL on startup
-chore: document Greptile workflow
+chore: document Qodo workflow
 ```
 
 ## Pull request checklist
@@ -43,8 +43,8 @@ Use [docs/checklists/pr-checklist.md](docs/checklists/pr-checklist.md) before op
 
 | Skill | When to use |
 |-------|-------------|
-| `check-pr` | One-shot PR readiness check (CI, Greptile, description) |
-| `greploop` | Loop until Greptile 5/5 confidence with zero comments |
+| `check-pr` | One-shot PR readiness check (CI, Qodo, description) |
+| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | Clean up recently modified code before opening PR |
 | `code-structure` | Refactoring shared logic into service layer |
 | `frontend-component-architecture` | Component placement, shadcn usage, feature folders |

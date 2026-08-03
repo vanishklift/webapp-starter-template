@@ -44,7 +44,7 @@ The executable list is in [tools/opensrc-stack.txt](../tools/opensrc-stack.txt).
 | `eslint` | ESLint |
 | `prettier` | Prettier |
 | `shadcn-ui/ui#main` | shadcn/ui components and registry |
-| `greptileai/skills#main` | Greptile agent skills source |
+| `qodo-ai/qodo-skills#main` | Qodo agent skills source (PR resolver patterns) |
 | `jaycmpb/convex-starter#main` | Reference starter (Hono HTTP API patterns) |
 | `vercel-labs/opensrc#main` | opensrc tool itself |
 

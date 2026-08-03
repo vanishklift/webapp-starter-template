@@ -6,4 +6,4 @@ Also read `AGENTS.md` for branch workflow context and `docs/checklists/pr-checkl
 
 If no PR number was given, detect the PR for the current branch with `gh pr view`.
 
-Report: status checks, description completeness, actionable vs informational comments, and recommended next steps.
+Report: status checks, Qodo review status, description completeness, actionable vs informational comments, and recommended next steps (including whether to run `qodo-loop`).
