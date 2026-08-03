@@ -40,8 +40,8 @@ Use project commands (`.claude/commands/`) or read skills directly in `.cursor/s
 
 | Skill | When to use |
 |-------|-------------|
-| `check-pr` | One-shot PR readiness check (CI, Greptile, description) |
-| `greploop` | Loop until Greptile 5/5 with zero comments |
+| `check-pr` | One-shot PR readiness check (CI, Qodo, description) |
+| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | Clean up recently modified code without changing behavior |
 | `code-structure` | Refactoring shared logic into service layer |
 | `frontend-component-architecture` | Component placement, shadcn usage, feature folders |

@@ -19,9 +19,9 @@ Enhance code clarity and consistency without changing behavior. Focus on recentl
 |-----------|------------------------|
 | After a large agent-generated change | Yes |
 | Before opening a PR with messy diff | Yes |
-| After `greploop` fixed many comments and code feels scattered | Yes |
+| After `qodo-loop` fixed many comments and code feels scattered | Yes |
 | During active feature development (mid-edit) | No — wait until a logical stopping point |
-| Greptile/CI found a real bug | No — fix the bug directly |
+| Qodo/CI found a real bug | No — fix the bug directly |
 
 ## Workbench standards
 

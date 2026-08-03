@@ -21,20 +21,39 @@ Copy this when working on a task or reviewing a teammate's PR.
 - [ ] PR template checklist filled in
 - [ ] (Optional) Ran **code-simplifier** skill on recently modified files
 
-## After opening a PR (Greptile + agent skills)
+## After opening a PR (Qodo + agent skills)
 
-- [ ] Wait for Greptile review (~3 minutes)
-- [ ] Run **check-pr** skill to triage CI status, Greptile comments, and description completeness
-- [ ] Fix actionable items and push again
-- [ ] If Greptile still has multiple rounds of feedback → run **greploop** skill
-- [ ] Read each Greptile comment — fix or reply with reasoning
-- [ ] Request review from a teammate
+- [ ] Comment `/agentic_review` on the PR (asks Qodo to review the current remote HEAD)
+- [ ] Run **check-pr** skill to triage CI status, Qodo findings, and description completeness
+- [ ] Fix actionable items and push again, **or** run **qodo-loop** if multiple rounds remain
+- [ ] Read each Qodo finding — fix or reply with reasoning (do not follow blindly)
+- [ ] Request review from a teammate when Action required = 0 and CI is green
+
+### What each action does
+
+| Action | What it does |
+|--------|--------------|
+| `/agentic_review` | Asks Qodo to review only the code currently pushed to the PR |
+| `check-pr` | One-shot triage of CI, Qodo buckets, human comments, and PR description — does **not** start a fix loop |
+| `qodo-loop` | Fix → push → `/agentic_review` loop (max 5 rounds) until Qodo is clean enough for humans |
+| Reply on a thread | Records whether a finding was fixed or deferred (and why) |
+| Resolve thread | Closes the GitHub conversation for that finding |
+| Commit | Records the local code fix |
+| Push | Updates the remote PR so the next Qodo review sees the fix |
+
+### Qodo finding buckets
+
+| Bucket | Default action |
+|--------|----------------|
+| Action required | Fix |
+| Review recommended | Fix (or defer with a concrete reason) |
+| Optional / informational | Defer or ignore |
 
 ## Reviewing a teammate's PR
 
 - [ ] Read the PR description — does it match the code?
 - [ ] Check CI is green (format, lint, typecheck, test, build)
-- [ ] Read Greptile comments — agree/disagree; don't ignore blindly
+- [ ] Read Qodo findings — agree/disagree; don't ignore blindly
 - [ ] Pull branch locally if needed: `git fetch && git checkout feat/branch-name`
 - [ ] Leave constructive comments or approve
 - [ ] Merge with squash when ready
@@ -49,7 +68,7 @@ Copy this when working on a task or reviewing a teammate's PR.
 | Skill | When |
 |-------|------|
 | `check-pr` | One-shot PR readiness check |
-| `greploop` | Loop until Greptile 5/5 with zero comments |
+| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | Clean up code without changing behavior |
 | `code-structure` | Refactoring shared logic |
 

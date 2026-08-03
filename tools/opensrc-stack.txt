@@ -24,6 +24,6 @@ prettier
 
 # Repo-only references / design and skill sources
 shadcn-ui/ui#main
-greptileai/skills#main
+qodo-ai/qodo-skills#main
 jaycmpb/convex-starter#main
 vercel-labs/opensrc#main

@@ -27,8 +27,8 @@ Use `staging` as the integration branch for feature work.
 
 | Skill | Location | When to use |
 |-------|----------|-------------|
-| `check-pr` | `.cursor/skills/check-pr/SKILL.md` | One-shot PR readiness check (CI, Greptile, description) |
-| `greploop` | `.cursor/skills/greploop/SKILL.md` | Loop until Greptile 5/5 with zero comments |
+| `check-pr` | `.cursor/skills/check-pr/SKILL.md` | One-shot PR readiness check (CI, Qodo, description) |
+| `qodo-loop` | `.cursor/skills/qodo-loop/SKILL.md` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | `.cursor/skills/code-simplifier/SKILL.md` | Clean up recently modified code without changing behavior |
 | `code-structure` | `.cursor/skills/code-structure/SKILL.md` | Refactoring shared logic into service layer |
 | `frontend-component-architecture` | `.cursor/skills/frontend-component-architecture/SKILL.md` | Component placement, shadcn usage, feature folders |
