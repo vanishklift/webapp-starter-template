@@ -15,7 +15,7 @@ This document records the agreed defaults for the workbench starter repo.
 | Language | TypeScript |
 | Styling | Tailwind CSS v4 |
 | Package manager | npm (pnpm optional later) |
-| Node.js | v20+ (tested on v24) |
+| Node.js | v20.x (pinned via `engines` + `.nvmrc`) |
 
 ## Quality baseline
 
@@ -38,14 +38,14 @@ This document records the agreed defaults for the workbench starter repo.
 
 | Tool | When to use |
 |------|-------------|
-| [Greptile](https://www.greptile.com/docs/introduction) | Automatic PR review on every pull request |
+| [Qodo](https://docs.qodo.ai/code-review/use-qodo-in-prs) | Manual `/agentic_review` on pull requests |
 | `check-pr` skill | One-shot PR readiness check before human review |
-| `greploop` skill | Loop until Greptile 5/5 confidence with zero comments |
+| `qodo-loop` skill | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` skill | Clean up recently modified code before opening PR |
 | [opensrc](https://github.com/vercel-labs/opensrc) | Fetch npm/repo source for deeper library context |
 | [code-structure skill](https://github.com/michaelshimeles/skills) | Guide service-layer architecture when refactoring |
 
-Greptile runs during PR review (not before opening a PR). Local lint/test runs before pushing.
+Qodo runs during PR review when you comment `/agentic_review` (not before opening a PR). Local lint/test runs before pushing.
 
 ## Deployment (placeholder)
 

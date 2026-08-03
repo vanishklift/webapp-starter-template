@@ -18,7 +18,7 @@ flowchart TD
     E --> F["npm run lint && npm run test"]
     F --> G["git push -u origin feat/my-task"]
     G --> H["Open PR: feat/my-task → staging"]
-    H --> I[Greptile + teammate review]
+    H --> I[Qodo + teammate review]
     I --> J[Fix comments and push again]
     J --> K[Merge PR into staging]
   end
@@ -105,31 +105,49 @@ Local copy: `.cursor/skills/code-simplifier/SKILL.md`
 - **Compare branch:** your `feat/...` branch
 - Fill in the PR template checklist
 
-### 4. Greptile review
+### 4. Qodo review
 
-[Greptile](https://www.greptile.com/docs/introduction) automatically reviews your PR in about 3 minutes.
+[Qodo](https://docs.qodo.ai/code-review/use-qodo-in-prs) reviews your PR when you ask it to.
 
-- Read each comment.
-- Fix real issues and push again (Greptile re-reviews).
-- Use 👍/👎 on comments so Greptile learns your team's style.
-- If Greptile suggests a fix, you can use **Fix with your Agent** (Cursor, etc.) when available.
+Comment on the PR:
 
-#### Agent skills for Greptile feedback
+```text
+/agentic_review
+```
+
+That asks Qodo to review **only the code currently pushed** to the PR (remote HEAD). Local uncommitted or unpushed changes are not included.
+
+- Read each finding. Qodo groups them into buckets such as **Action required**, **Review recommended**, and **Optional**.
+- Fix real issues and push again, then comment `/agentic_review` again (or let `qodo-loop` do that).
+- Triage findings — do not follow them blindly. Reply with a reason when you defer a false positive or intentional behavior.
+
+#### What each action does
+
+| Action | What it does |
+|--------|--------------|
+| `/agentic_review` | Asks Qodo to review the current remote HEAD |
+| Reply on a thread | Records whether a finding was fixed or deferred (and why) |
+| Resolve thread | Closes the GitHub conversation for that finding |
+| Commit | Records the local code fix |
+| Push | Updates the remote PR so the next Qodo review sees the fix |
+| Re-review | Posts `/agentic_review` again after push |
+
+#### Agent skills for Qodo feedback
 
 | Skill | When to use | How |
 |-------|-------------|-----|
-| **check-pr** | First check after opening PR or after pushing fixes | Ask Cursor: "run check-pr" — triages CI, Greptile comments, and description |
-| **greploop** | Greptile still has many comments or confidence below 5/5 | Ask Cursor: "run greploop" — loops fix → push → re-review until clean |
+| **check-pr** | First check after opening PR or after pushing fixes | Ask Cursor: "run check-pr" — triages CI, Qodo findings, and description (no fix loop) |
+| **qodo-loop** | Multiple Qodo findings or multiple review rounds expected | Ask Cursor: "run qodo-loop" — loops fix → push → `/agentic_review` until clean |
 | **code-simplifier** | Code works but the diff is messy | Ask Cursor: "run code-simplifier" — cleans up without changing behavior |
 
 Skills live in `.cursor/skills/<name>/SKILL.md`. Requires `gh` CLI authenticated (`gh auth login`).
 
 **Typical flow:**
-1. Open PR → wait for Greptile (~3 min)
+1. Open PR → comment `/agentic_review`
 2. Run **check-pr** to see what's actionable
-3. Fix issues, push again
-4. If Greptile still has multiple rounds of feedback → run **greploop**
-5. Run **code-simplifier** before final human review if needed
+3. Fix a small set manually, or run **qodo-loop** if several findings remain
+4. When Action required is clear and CI is green → request human review
+5. Run **code-simplifier** before final human review if the diff feels messy
 
 ### 5. Human review
 
@@ -181,7 +199,7 @@ git push
 | Opened PR to `main` instead of `staging` | Close PR, reopen with base = `staging` |
 | Forgot to pull `staging` before branching | `git checkout staging && git pull` then merge into your branch |
 | Pushed to `staging` directly (blocked) | Create a branch and open a PR instead |
-| Greptile comment seems wrong | Reply explaining why; use 👎 to train it |
+| Qodo finding seems wrong | Reply explaining why; defer with a concrete reason |
 | `VITE_CONVEX_URL` missing locally | Run `npm run dev:backend`, copy URL to `frontend/.env.local` |
 
 ---
@@ -191,8 +209,8 @@ git push
 | Resource | Link | When to use |
 |----------|------|-------------|
 | Architecture | [starter-architecture.md](starter-architecture.md) | How the stack fits together |
-| Greptile | [Introduction](https://www.greptile.com/docs/introduction) | Every PR — automatic AI review |
-| check-pr / greploop | `.cursor/skills/` | PR readiness and Greptile fix loops |
+| Qodo | [Use Qodo in PRs](https://docs.qodo.ai/code-review/use-qodo-in-prs) | Manual `/agentic_review` on PRs |
+| check-pr / qodo-loop | `.cursor/skills/` | PR readiness and Qodo fix loops |
 | code-simplifier | `.cursor/skills/code-simplifier/` | Clean up code before review |
 | Convex | [Docs home](https://docs.convex.dev/home) | Backend, schema, queries |
 | TanStack | [tanstack.com](https://tanstack.com/) | Router, Start, Query |

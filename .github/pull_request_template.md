@@ -15,10 +15,11 @@
 - [ ] I tested locally (`npm run dev`)
 - [ ] PR title follows convention: `feat: ...`, `fix: ...`, or `chore: ...`
 
-## Greptile / review
+## Qodo / review
 
-- [ ] I read Greptile comments and fixed or replied to each one
-- [ ] I ran `check-pr` (or manually verified CI + Greptile status)
+- [ ] I commented `/agentic_review` (or ran `qodo-loop`) and read the findings
+- [ ] I fixed or replied to each actionable Qodo finding
+- [ ] I ran `check-pr` (or manually verified CI + Qodo status)
 - [ ] I requested review from a teammate
 
 ## Screenshots (if UI change)

@@ -22,7 +22,7 @@ This folder gives Claude Code users repo-specific onboarding and slash commands.
 | Command | Skill |
 |---------|-------|
 | `/project:check-pr` | PR readiness check |
-| `/project:greploop` | Greploop until Greptile 5/5 |
+| `/project:qodo-loop` | Qodo-loop until Action required is clear |
 | `/project:simplify` | Code simplifier |
 | `/project:code-structure` | Service-layer refactoring |
 | `/project:frontend-architecture` | Frontend component placement |

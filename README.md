@@ -87,7 +87,7 @@ workbench/
 ├── backend/
 │   └── convex/        # Convex schema, queries, mutations, Hono HTTP API
 ├── docs/              # Team guides, architecture, checklists
-├── .cursor/skills/    # Agent skills (Greptile, code-simplifier, etc.)
+├── .cursor/skills/    # Agent skills (Qodo, code-simplifier, etc.)
 ├── .claude/           # Claude Code project config and slash commands
 ├── .codex/            # Codex prompt playbooks and onboarding
 ├── .github/           # PR templates, CI, branch setup notes
@@ -129,7 +129,7 @@ We use **`main`** (production) and **`staging`** (integration). All work happens
 | Resource | Link | Use for |
 |----------|------|---------|
 | Architecture | [docs/starter-architecture.md](docs/starter-architecture.md) | How the stack fits together |
-| Greptile | [docs](https://www.greptile.com/docs/introduction) | AI PR review on every pull request |
+| Qodo | [docs](https://docs.qodo.ai/code-review/use-qodo-in-prs) | Manual `/agentic_review` on pull requests |
 | Convex | [docs](https://docs.convex.dev/home) | Backend, database, real-time queries |
 | TanStack | [tanstack.com](https://tanstack.com/) | Router, Start, Query |
 | shadcn/ui | [ui.shadcn.com](https://ui.shadcn.com/) | UI components |
@@ -141,7 +141,7 @@ We use **`main`** (production) and **`staging`** (integration). All work happens
 | Skill | When to use |
 |-------|-------------|
 | `check-pr` | One-shot PR readiness check before human review |
-| `greploop` | Loop until Greptile 5/5 confidence with zero comments |
+| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | Clean up recently modified code before opening PR |
 | `code-structure` | Refactoring shared logic into service layer |
 | `frontend-component-architecture` | Component placement, shadcn usage, feature folders |
