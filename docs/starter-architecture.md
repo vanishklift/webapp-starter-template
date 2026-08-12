@@ -38,7 +38,7 @@ workbench/
 │           ├── internal/        # Background actions (logging)
 │           └── tasks/           # Feature: queries, mutations, http
 ├── docs/                        # Team guides
-├── .cursor/skills/              # Agent skills (Qodo, code-simplifier, etc.)
+├── .cursor/skills/              # Agent skills (PR checks, code-simplifier, etc.)
 ├── opensrc/                     # Local source cache (gitignored)
 └── convex.json                  # Points CLI to backend/convex
 ```
@@ -191,8 +191,7 @@ See [git-workflow-beginner.md](git-workflow-beginner.md) for the full beginner g
 
 | Skill | When to use |
 |-------|-------------|
-| `check-pr` | One-shot PR readiness check (CI, Qodo findings, description) |
-| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
+| `check-pr` | One-shot PR readiness check (CI, reviews, description) |
 | `code-simplifier` | Clean up recently modified code before opening PR |
 | `code-structure` | Refactoring shared logic into service layer |
 | `frontend-component-architecture` | Component placement, shadcn usage, feature folders |

@@ -19,9 +19,9 @@ Enhance code clarity and consistency without changing behavior. Focus on recentl
 |-----------|------------------------|
 | After a large agent-generated change | Yes |
 | Before opening a PR with messy diff | Yes |
-| After `qodo-loop` fixed many comments and code feels scattered | Yes |
+| After review fixes leave the code feeling scattered | Yes |
 | During active feature development (mid-edit) | No — wait until a logical stopping point |
-| Qodo/CI found a real bug | No — fix the bug directly |
+| Review or CI found a real bug | No — fix the bug directly |
 
 ## Workbench standards
 

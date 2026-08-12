@@ -54,19 +54,9 @@ Branch name pattern: `staging`
 - Enable **Allow squash merging** (recommended for beginners — one commit per PR).
 - Disable merge commits if you want a linear history.
 
-## 6. Connect Qodo
-
-1. Go to [Qodo — use in PRs](https://docs.qodo.ai/code-review/use-qodo-in-prs).
-2. Install/authorize the Qodo GitHub app for this repository.
-3. On a test PR, comment `/agentic_review` to trigger a review.
-4. Confirm Qodo posts a summary and/or inline findings.
-
-This repo uses **manual** Qodo v2 reviews (`/agentic_review`). Agents do not rely on automatic per-push reviews.
-
-## 7. Verify
+## 6. Verify
 
 - [ ] `main` and `staging` exist on GitHub
 - [ ] Direct push to `main` is blocked
 - [ ] PR template appears when opening a pull request
 - [ ] CI workflow runs on PRs to `staging` and `main`
-- [ ] Qodo responds to `/agentic_review` on test PRs
