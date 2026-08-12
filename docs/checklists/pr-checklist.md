@@ -21,39 +21,28 @@ Copy this when working on a task or reviewing a teammate's PR.
 - [ ] PR template checklist filled in
 - [ ] (Optional) Ran **code-simplifier** skill on recently modified files
 
-## After opening a PR (Qodo + agent skills)
+## After opening a PR
 
-- [ ] Comment `/agentic_review` on the PR (asks Qodo to review the current remote HEAD)
-- [ ] Run **check-pr** skill to triage CI status, Qodo findings, and description completeness
-- [ ] Fix actionable items and push again, **or** run **qodo-loop** if multiple rounds remain
-- [ ] Read each Qodo finding — fix or reply with reasoning (do not follow blindly)
-- [ ] Request review from a teammate when Action required = 0 and CI is green
+- [ ] Run **check-pr** skill to triage CI status, review comments, and description completeness
+- [ ] Fix actionable items and push again
+- [ ] Address or reply to each review comment
+- [ ] Request review from a teammate when CI is green
 
 ### What each action does
 
 | Action | What it does |
 |--------|--------------|
-| `/agentic_review` | Asks Qodo to review only the code currently pushed to the PR |
-| `check-pr` | One-shot triage of CI, Qodo buckets, human comments, and PR description — does **not** start a fix loop |
-| `qodo-loop` | Fix → push → `/agentic_review` loop (max 5 rounds) until Qodo is clean enough for humans |
-| Reply on a thread | Records whether a finding was fixed or deferred (and why) |
-| Resolve thread | Closes the GitHub conversation for that finding |
+| `check-pr` | One-shot triage of CI, human comments, and PR description |
+| Reply on a thread | Records whether feedback was fixed or deferred and why |
+| Resolve thread | Closes the GitHub conversation |
 | Commit | Records the local code fix |
-| Push | Updates the remote PR so the next Qodo review sees the fix |
-
-### Qodo finding buckets
-
-| Bucket | Default action |
-|--------|----------------|
-| Action required | Fix |
-| Review recommended | Fix (or defer with a concrete reason) |
-| Optional / informational | Defer or ignore |
+| Push | Updates the remote PR with the fix |
 
 ## Reviewing a teammate's PR
 
 - [ ] Read the PR description — does it match the code?
 - [ ] Check CI is green (format, lint, typecheck, test, build)
-- [ ] Read Qodo findings — agree/disagree; don't ignore blindly
+- [ ] Read existing review comments and verify they are addressed
 - [ ] Pull branch locally if needed: `git fetch && git checkout feat/branch-name`
 - [ ] Leave constructive comments or approve
 - [ ] Merge with squash when ready
@@ -68,7 +57,6 @@ Copy this when working on a task or reviewing a teammate's PR.
 | Skill | When |
 |-------|------|
 | `check-pr` | One-shot PR readiness check |
-| `qodo-loop` | Loop until Qodo Action required is clear and CI passes |
 | `code-simplifier` | Clean up code without changing behavior |
 | `code-structure` | Refactoring shared logic |
 

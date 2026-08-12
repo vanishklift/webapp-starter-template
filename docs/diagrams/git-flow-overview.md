@@ -38,7 +38,7 @@ gitGraph
 | Person | Typical action |
 |--------|----------------|
 | Developer | `feat/*` → PR → `staging` |
-| Reviewer | Approve PR, check Qodo + CI |
+| Reviewer | Approve PR and check CI |
 | Release owner | `staging` → PR → `main` |
 
 Full commands: [git-workflow-beginner.md](../git-workflow-beginner.md)
